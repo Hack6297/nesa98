@@ -174,8 +174,8 @@
             const searchTerm = searchInput.value.trim();
             
             if (searchTerm) {
-                // Open NESA search results page
-                window.location.href = 'search_new 98.html?q=' + encodeURIComponent(searchTerm);
+                // Open NESA search results page (use search.html for hosted version)
+                window.location.href = 'search.html?q=' + encodeURIComponent(searchTerm);
             } else {
                 alert('Please enter something to search!');
             }
@@ -208,7 +208,6 @@
 <body>
     <div class="title">
         <h2>Nesa! 98</h2>
-    </p>yes, and that is Dzhabrail's Website.<p>
     </div>
     <div class="search-container">
         <input type="text" class="search-box" placeholder="Search Nesa 98...">
