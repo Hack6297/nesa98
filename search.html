@@ -200,7 +200,7 @@
         <div id="results"></div>
     </div>
 
-    <script src="website_database copy98.js"></script>
+    <script src="website_database.js"></script>
     <script>
         // Get search query from URL
         const urlParams = new URLSearchParams(window.location.search);
@@ -240,13 +240,13 @@
             );
             
             if (filteredResults.length === 0) {
-                resultsDiv.innerHTML = `<div class="no-results"><h2>No results found for "${query}"</h2><p>Try different keywords or check your spelling.</p></div>`;
+                resultsDiv.innerHTML = `<div class="no-results"><h2>No results found for "${query}"</h2><p>Try different keywords or check your spelling.</p><button onclick="searchWebPrivately()" style="margin-top: 15px; padding: 8px 16px; background: linear-gradient(to bottom, #ffffff 0%, #ece9d8 50%, #d4d0c8 100%); border: 2px outset #ffffff; cursor: pointer; font-family: 'Tahoma', 'MS Sans Serif', sans-serif; font-size: 11px;">🔒 Search Web Privately</button></div>`;
                 statsDiv.innerHTML = '';
                 return;
             }
             
             // Display stats
-            statsDiv.innerHTML = `About ${filteredResults.length} results (0.${Math.floor(Math.random() * 99) + 10} seconds)`;
+            statsDiv.innerHTML = `About ${filteredResults.length} results (0.${Math.floor(Math.random() * 99) + 10} seconds) &nbsp; <button onclick="searchWebPrivately()" style="padding: 4px 12px; background: linear-gradient(to bottom, #ffffff 0%, #ece9d8 50%, #d4d0c8 100%); border: 2px outset #ffffff; cursor: pointer; font-family: 'Tahoma', 'MS Sans Serif', sans-serif; font-size: 11px;">🔒 Search Web Privately</button>`;
             
             // Display results
             let html = '';
@@ -286,6 +286,15 @@
         function clearSearch() {
             document.getElementById('searchInput').value = '';
             window.location.href = 'search.html';
+        }
+        
+        function searchWebPrivately() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('q');
+            if (query) {
+                // Search on DuckDuckGo with privacy mode (kp=1)
+                window.open('https://duckduckgo.com/?q=' + encodeURIComponent(query) + '&kp=1', '_blank');
+            }
         }
         
         function showAllWebsites() {
