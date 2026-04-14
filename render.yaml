@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: nesa98
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn mainwebsite:application
+    healthCheckPath: /ping
+    plan: free
